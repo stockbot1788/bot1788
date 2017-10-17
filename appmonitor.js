@@ -63,9 +63,9 @@ setInterval(function() {
   var time = moment(); 
   if(time.minute()%2==1){
     performForOneMins();
-    console.log("I am doing 1 minutes check");
+    console.log("I am doing 1 minutes check %s:%s",time.hour(),time.minute());
   }else{
-    console.log("I am doing 2 minutes check");
+    console.log("I am doing 2 minutes check %s:%s",time.hour(),time.minute());
     performForTwoMins();
   }
 }, the_interval);
