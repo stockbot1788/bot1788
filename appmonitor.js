@@ -130,7 +130,7 @@ function CheckIsBuylist(){
       }
   }
   itemArr = itemArr.reverse();
-  for(var i=Math.max(0,itemArr.length-6);i<itemArr.length;i++){
+  for(var i=Math.max(0,itemArr.length-4);i<itemArr.length;i++){
   //for(var i=0;i<itemArr.length;i++){
     var item = itemArr[i];
     if(item.MA1/item.MA2>=1 && item.MA1/item.MA2>geno.Fir_Ra){
