@@ -7,6 +7,7 @@ var tto = require('terminal-table-output').create();
 var moment = require('moment');
 var async = require('async');
 
+
 /*
 var stock_numberFile="fulllist.json";
 var returnTxt = Utils.readFile("fulllist.json");
@@ -82,7 +83,7 @@ var ib = new (require('ib'))({
 
 var date = "20171030"
 ib.connect();
-ib.reqHistoricalData(1, ib.contract.future("MHI", date, "HKD", "HKFE"), "20171017" + ' 18:00:00', durationStr = '1 D', barSizeSetting = '3 mins', whatToShow = 'TRADES', useRTH = 1, formatDate = 1, false);
+ib.reqHistoricalData(1, ib.contract.future("MHI", date, "HKD", "HKFE"), "20171018" + ' 18:00:00', durationStr = '1 D', barSizeSetting = '3 mins', whatToShow = 'TRADES', useRTH = 1, formatDate = 1, false);
 ib.on('historicalData', function (reqId, date, open, high, low, close, volume, barCount, WAP, hasGaps) {
   if (_.includes([-1], open)) {
     ib.disconnect();
