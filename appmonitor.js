@@ -100,7 +100,7 @@ function CheckIsBuylist(){
 
   var StockArr = Utils.getDataForRealTimeTrade("./realtime/real.txt");
   var closeArr =[];
-  var data = StockArr[0].data;
+  var data = StockArr[StockArr.length-1].data;
   for(var i=0;i<data.length;i++){
       var str = data[i];
       var arr = str.split(",");
