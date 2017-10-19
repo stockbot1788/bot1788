@@ -100,12 +100,13 @@ function CheckIsBuylist(){
 
   var StockArr = Utils.getDataForRealTimeTrade("./realtime/real.txt");
   var closeArr =[];
-  var data = StockArr[StockArr.length-1].data;
+  var data = StockArr[0].data;
   for(var i=0;i<data.length;i++){
       var str = data[i];
       var arr = str.split(",");
       closeArr.push(parseInt(arr[4]));
   }
+
 
   var MA1 = SMA.calculate({period : geno.Fir_MA, values : closeArr});
   var MA2 = SMA.calculate({period : geno.Sec_Ma, values : closeArr});
@@ -130,9 +131,10 @@ function CheckIsBuylist(){
       }
   }
   itemArr = itemArr.reverse();
-  for(var i=Math.max(0,itemArr.length-4);i<itemArr.length;i++){
-  //for(var i=0;i<itemArr.length;i++){
+  console.log("looking at data "+itemArr.length)
+  for(var i=0;i<itemArr.length;i++){
     var item = itemArr[i];
+
     if(item.MA1/item.MA2>=1 && item.MA1/item.MA2>geno.Fir_Ra){
       var str = data[item.idx];
       str = str.split(",");
@@ -140,6 +142,7 @@ function CheckIsBuylist(){
       var closePrice = str[4];
       var msg = closePrice+"("+date+")"+"  buy";
       bot.sendMessage("-251497331", msg);
+      console.log("data found buy")
     }else if(item.MA1/item.MA2<=1 && item.MA2/item.MA1>geno.Sec_Ra){
       var str = data[item.idx];
       str = str.split(",");
@@ -147,8 +150,10 @@ function CheckIsBuylist(){
       var closePrice = str[4];
       var msg = closePrice+"("+date+")"+"  sell";
       bot.sendMessage("-251497331", msg);
+      console.log("data found sell")
     }
   }
+  console.log("check finish");
 }
 
 
